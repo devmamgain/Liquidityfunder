@@ -72,7 +72,6 @@ const DashBoards =()=>{
         };
 
         const seriesData = generateRandomData(30, { min: 10, max: 100 });
-
         const options = {
             series: [{
                 name: "STOCK ABC",
@@ -103,29 +102,34 @@ const DashBoards =()=>{
                 enabled: false
             },
             stroke: {
-                curve: 'straight'
+                width:2
             },
+            
             grid: {
                 show: false,
                 strokeDashArray: 4,
                 padding: {
-                    left: 2,
-                    right: 2,
+                    left: 20,
+                    right: 20,
                     top: 0
                 },
             },
+            
             title: {
                 text: 'Account Overview',
                 align: 'left',
                 style: {
-                    color: '#ffffff' // Set title text color to white
+                    color: '#ffffff', // Set title text color to white
+                    fontWeight: '600', // semibold font weight
+                fontSize: '20px' // increase font size
                 }
             },
             subtitle: {
                 text: '822669',
                 align: 'left',
                 style: {
-                    color: '#ffffff' // Set title text color to white
+                    color: '#ffffff', // Set title text color to white
+                    fontWeight: '600'
                 }
             },
             xaxis: {
@@ -152,12 +156,37 @@ const DashBoards =()=>{
                 labels: {
                     colors: '#ffffff' // Set legend text color to white
                 }
-            }
+            },
         };
-
+    
         const chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
-
+        // document.getElementById("today").addEventListener("click", function() {
+        //     chart.updateOptions({ 
+        //         xaxis: { 
+        //             min: new Date().setHours(0, 0, 0, 0), 
+        //             max: new Date().getTime() 
+        //         }
+        //     });
+        // });
+    
+        // document.getElementById("this-week").addEventListener("click", function() {
+        //     chart.updateOptions({ 
+        //         xaxis: { 
+        //             min: new Date().setDate(new Date().getDate() - 7), 
+        //             max: new Date().getTime() 
+        //         }
+        //     });
+        // });
+    
+        // document.getElementById("this-month").addEventListener("click", function() {
+        //     chart.updateOptions({ 
+        //         xaxis: { 
+        //             min: new Date(new Date().getFullYear(), new Date().getMonth(), 1).getTime(), 
+        //             max: new Date().getTime() 
+        //         }
+        //     });
+        // });
         // Clean up function
         return () => {
             chart.destroy();
@@ -264,6 +293,12 @@ const DashBoards =()=>{
                     <div className='flex-grow rounded-xl mt-12 bg-[#303131] mr-3 mb-10 w-[55%]'>
                     
                     <div id="chart"   className='p-5  border-[#1F1F1E]' ></div>
+                    {/* <div id="range-selector">
+        <button id="today">Today</button>
+        <button id="this-week">This Week</button>
+        <button id="this-month">This Month</button>
+        <button id="custom">Custom</button>
+    </div> */}
                     </div>
                     <div className="ml-auto mt-12 mr-5 bg-[#303131] rounded-lg w-[35.5%]">
 
@@ -512,7 +547,7 @@ Pending</span>
                     <h1 className="py-3 font-semibold text-sm text-gray-100">Trading History </h1>
                     </div>
                     <div className="bg-[#303131] rounded-xl flex flex-col flex-grow gap-3 mr-5 p-5">
-    <table className="flex-grow gap-2 w-full">
+    <table className="flex-grow gap-2 w-full ">
         <thead className="flex w-full">
             <tr className="text-gray-100 text-sm font-semibold bg-[#1F1F1E] w-full">
                 <td className="p-4 w-[10%]">SYMBOL</td>

@@ -1,28 +1,43 @@
 import star from "../assets/star.svg"
-import profit from "../assets/profit.svg"
+import greenprofit from "../assets/greenprofit.svg"
 import { useEffect } from "react"
 const LeaderBoard = () => {
 
-const data = [{user : "dev",
-accountsize : "231",
-profit : 2345,
-profitpercent : "20%"},
-{user : "dev",
-accountsize : "231",
-profit : 2345,
-profitpercent : "20%"},
-{user : "dev",
-accountsize : "231",
-profit : 2345,
-profitpercent : "20%"},
-{user : "dev",
-accountsize : "231",
-profit : 2345,
-profitpercent : "20%"},
-{user : "dev",
-accountsize : "231",
-profit : 2345,
-profitpercent : "20%"}]
+const data = [{
+  id:1,
+  country:"🇧🇪",
+  user : "Anouar H",
+accountsize : "25,000",
+profit : "14,052.42",
+profitpercent : "56.21%"},
+{
+  id:2,
+  country:"🇺🇸",
+  user : "Ahmad M",
+accountsize : "100,000",
+profit : "54,859.12",
+profitpercent : "54.86%"},
+{
+  id:3,
+  country:"🇮🇳",
+  user : "NIKHIL K",
+accountsize : "25,000",
+profit : "12,763.12",
+profitpercent : "51.05%"},
+{
+  id:4,
+  country:"🇬🇧",
+  user : "Denzel C",
+accountsize : "10,000",
+profit : "5,012.58",
+profitpercent : "50.13%"},
+{
+  id:5,
+  country:"🇲🇱",
+  user : "Arawani S",
+accountsize : "100,000",
+profit : "45,573.05",
+profitpercent : "45.57%"}]
 useEffect(()=>{
 console.log
 },[])
@@ -200,19 +215,23 @@ console.log
 
             </div>
            <div className="flex ml-5 flex-col flex-grow mt-5">
-           {data.map(data =><div className="flex flex-grow mb-3 rounded-xl border-2 mr-5 p-3 gap-5 border-[#505559]">
-           <img src="https://app.fundingpips.com/static/media/badge_2.a75063babe5056291940.png" alt="" className="h-16 w-20 ml-5" />
+           {data.map(data =><div className="flex flex-grow mb-3 rounded-xl border-2 mr-5 p-3  border-[#505559]">
+           <h1 className="ml-3 mt-3 text-3xl font-bold text-slate-200"> {data.id}</h1>
+           {data.id === 1 ?  <img src="https://app.fundingpips.com/static/media/badge_1.52f27201c652bb8168e2.png" alt="" className="h-16 w-20 ml-5" /> : <img src="https://app.fundingpips.com/static/media/badge_2.a75063babe5056291940.png" alt="" className="h-16 w-20 ml-5" />}
           <div className="flex flex-grow my-auto">
-            <h1 className=" flex flex-grow w-[40%] text-xl font-semibold gap-5 text-slate-200"> 
+            <div className="flex flex-grow w-[40%] ">
+            <h1 className=" text-xl font-semibold gap-5 text-slate-200"> 
            {data.user}</h1>
+           <span className="p-1 text-xl font-semibold text-slate-200">{data.country}</span>
+           </div>
             <h1 className=" flex flex-grow w-[40%] font-semibold text-slate-200"> 
-           $ {data.accountsize} </h1>
-            <h1 className=" flex flex-grow w-[40%] font-bold text-green-800 gap-1"> 
-            <img src={profit} alt="" className="w-6 h-6 " />
+           ${data.accountsize} </h1>
+            <h1 className=" flex flex-grow w-[40%] font-bold text-green-600 gap-1"> 
+            <img src={greenprofit} alt="" className="w-6 h-6 " />
 
-           $ {data.profit} </h1>
-            <h1 className=" flex flex-grow w-[40%] font-bold text-green-800 gap-1"> 
-            <img src={profit} alt="" className="w-6 h-6 " />
+           ${data.profit} </h1>
+            <h1 className=" flex flex-grow w-[40%] font-bold text-green-600 gap-1"> 
+            <img src={greenprofit} alt="" className="w-6 h-6 " />
 
             {data.profitpercent} </h1>
             </div>

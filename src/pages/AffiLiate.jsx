@@ -10,7 +10,40 @@ const AffiLiate = ()=>{
                 </path></svg>
               Affiliate
             </h1>
+            <div className="mt-8 flex flex-grow rounded-xl bg-[#1F1F1E]">
+              <div className="mb-5">
+            <h1 className="flex text-slate-200 text-3xl font-bold p-6">Your Referral Code
+            </h1>
+            <p className="flex text-slate-200  pl-6">Use this URL to promote accross different platforms and track your conversions on the</p>
+            <p className="flex text-slate-200 pl-6">referrals tab, this link is unique to you.</p>
             </div>
+            <div className="bg-blue-600 flex flex-grow mr-5 ml-32 h-12 my-auto rounded-xl items-center">
+            <p className="flex text-slate-200 ml-5">https://app.fundingpips.com/register?ref=4021e86</p>
+           </div>
+            </div>
+            <div className="bg-blue-600 flex flex-grow mt-5 h-16 my-auto rounded-xl items-center">
+            <p className="flex text-slate-200 ml-5 text-lg">Click on the link to know more about how affiliates works</p>
+            <button className="ml-auto bg-blue-900 py-2 px-4 h-10 text-sm text-slate-200 mr-5 rounded-xl">Visit Here</button>
+           </div>
+           <div className="mt-8 flex flex-grow rounded-xl bg-[#1F1F1E]">
+           <div className="mb-5">
+            <h1 className="flex text-slate-200 text-xl font-bold px-6 pt-6">Total Purchased
+            </h1>
+            <h1 className=" text-blue-600 text-3xl font-bold px-6">0
+            </h1>
+            <h1 className="flex text-slate-200 text-xl font-bold px-6 pt-6">Total Earned
+            </h1>
+            <h1 className=" text-blue-600 text-3xl font-bold px-6">$0.00
+            </h1>
+            <h1 className="flex text-slate-200 text-xl font-bold px-6 pt-6">Total Paid Out
+            </h1>
+            <h1 className=" text-blue-600 text-3xl font-bold px-6">$0.00
+            </h1>
+            </div>
+            
+</div>
+            </div>
+            
             </div>
             </div>
             </div>

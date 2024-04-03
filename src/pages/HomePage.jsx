@@ -49,29 +49,34 @@ useEffect(() => {
             enabled: false
         },
         stroke: {
-            curve: 'straight'
+            width:2
         },
+        
         grid: {
             show: false,
             strokeDashArray: 4,
             padding: {
-                left: 2,
-                right: 2,
+                left: 20,
+                right: 20,
                 top: 0
             },
         },
+        
         title: {
             text: 'Account Overview',
             align: 'left',
             style: {
-                color: '#ffffff' // Set title text color to white
+                color: '#ffffff', // Set title text color to white
+                fontWeight: '600', // semibold font weight
+            fontSize: '20px' // increase font size
             }
         },
         subtitle: {
             text: '822669',
             align: 'left',
             style: {
-                color: '#ffffff' // Set title text color to white
+                color: '#ffffff', // Set title text color to white
+                fontWeight: '600'
             }
         },
         xaxis: {

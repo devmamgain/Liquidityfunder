@@ -39,7 +39,7 @@ const SideBar = () => {
             <div
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                className={`${open ? "w-72" : "w-20"} bg-[#303131] h-screen  pl-4 mt-16 relative duration-300 border-r border-[#313445]`}
+                className={`${open ? "w-72" : "w-20"} bg-[#303131] h-screen  pl-4 mt-14 border-t-2 relative duration-300 border-r border-[#1F1F1E]`}
             >
               
                 <ul className="">
