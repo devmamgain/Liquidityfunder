@@ -53,7 +53,9 @@ const DashBoards =()=>{
         if (view === 'month') {
             const dateString = date.toDateString();
             const tradeAmount = calendarData[dateString] || 0; // Get trade amount for the date
-            return <p>${tradeAmount}</p>; // Display trade amount below each date
+            const tileClass = tradeAmount === 0 ? 'red' : 'blue';
+
+            return <p className={`bg-${tileClass}-500 rounded-xl`}>${tradeAmount}</p>; // Display trade amount below each date
         }
         return null;
     };
@@ -79,7 +81,7 @@ const DashBoards =()=>{
             }],
             chart: {
                 type: 'area',
-                height: "70%",
+                height: "80%",
                 width:"100%",
                 fontFamily: "Inter, sans-serif",
                 zoom: {
@@ -161,32 +163,32 @@ const DashBoards =()=>{
     
         const chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
-        // document.getElementById("today").addEventListener("click", function() {
-        //     chart.updateOptions({ 
-        //         xaxis: { 
-        //             min: new Date().setHours(0, 0, 0, 0), 
-        //             max: new Date().getTime() 
-        //         }
-        //     });
-        // });
+        document.getElementById("today").addEventListener("click", function() {
+            chart.updateOptions({ 
+                xaxis: { 
+                    min: new Date().setHours(0, 0, 0, 0), 
+                    max: new Date().getTime() 
+                }
+            });
+        });
     
-        // document.getElementById("this-week").addEventListener("click", function() {
-        //     chart.updateOptions({ 
-        //         xaxis: { 
-        //             min: new Date().setDate(new Date().getDate() - 7), 
-        //             max: new Date().getTime() 
-        //         }
-        //     });
-        // });
+        document.getElementById("this-week").addEventListener("click", function() {
+            chart.updateOptions({ 
+                xaxis: { 
+                    min: new Date().setDate(new Date().getDate() - 7), 
+                    max: new Date().getTime() 
+                }
+            });
+        });
     
-        // document.getElementById("this-month").addEventListener("click", function() {
-        //     chart.updateOptions({ 
-        //         xaxis: { 
-        //             min: new Date(new Date().getFullYear(), new Date().getMonth(), 1).getTime(), 
-        //             max: new Date().getTime() 
-        //         }
-        //     });
-        // });
+        document.getElementById("this-month").addEventListener("click", function() {
+            chart.updateOptions({ 
+                xaxis: { 
+                    min: new Date(new Date().getFullYear(), new Date().getMonth(), 1).getTime(), 
+                    max: new Date().getTime() 
+                }
+            });
+        });
         // Clean up function
         return () => {
             chart.destroy();
@@ -290,15 +292,17 @@ const DashBoards =()=>{
                  
                     </div>
                     <div className='flex'>
-                    <div className='flex-grow rounded-xl mt-12 bg-[#303131] mr-3 mb-10 w-[55%]'>
+                    <div className='flex-grow rounded-xl mt-12 bg-[#303131] mr-3  w-[55%]'>
                     
-                    <div id="chart"   className='p-5  border-[#1F1F1E]' ></div>
-                    {/* <div id="range-selector">
-        <button id="today">Today</button>
-        <button id="this-week">This Week</button>
-        <button id="this-month">This Month</button>
-        <button id="custom">Custom</button>
-    </div> */}
+                    <div id="chart"   className='p-5 border-[#1F1F1E]' ></div>
+                    <div className='flex flex-grow mt-5 justify-center text-slate-200'>
+                        <div className=' flex gap-5 bg-[#1F1F1E] rounded-lg divide-x border border-[#505559] divide-[#505559]'>
+        <button id="today" className=' p-2 '>Today</button>
+        <button id="this-week" className=' p-2 '>Week</button>
+        <button id="this-month" className=' p-2 '>Month</button>
+        <button id="custom" className=' p-2 '>Custom</button>
+        </div>
+    </div>
                     </div>
                     <div className="ml-auto mt-12 mr-5 bg-[#303131] rounded-lg w-[35.5%]">
 
@@ -351,7 +355,7 @@ const DashBoards =()=>{
 
 Pending</span>
                 </div>
-                <div className="border rounded-xl ml-3 mr-3 mt-3">
+                <div className="border-2 rounded-xl ml-3 mr-3 mt-3 border-[#505559]">
                 <h1 className="font-bold text-sm text-blue-700 px-2 pt-2 ">Daily Loss Limit
                 <span className="ml-3 bg-blue-100 text-blue-500 text-xs px-3  rounded-md ">15:11:06</span>
                 </h1> 
@@ -362,7 +366,7 @@ Pending</span>
                 <h1 className=" text-sm text-gray-100 px-2 pb-2">Threshold at:$9,006.64</h1>
 
                 </div>
-                <div className="border rounded-xl ml-3 mr-3 mt-3">
+                <div className="border-2 rounded-xl ml-3 mr-3 mt-3 border-[#505559]">
                 <h1 className="font-bold text-sm text-blue-700 px-2 pt-2 ">Max Loss Limit
                 </h1> 
                 <h1 className="font-bold text-sm text-gray-100 p-2">$444.13 Left</h1>
@@ -371,7 +375,7 @@ Pending</span>
                 <h1 className=" text-sm text-gray-100 px-2 pb-2">Threshold at:$9,006.64</h1>
 
                 </div>
-                <div className="border rounded-xl ml-3 mr-3 mt-3 mb-3">
+                <div className="border-2 rounded-xl ml-3 mr-3 mt-3 mb-3 border-[#505559]">
                 <h1 className="font-bold text-sm text-blue-700 px-2 pt-2 ">Profit Target
                 </h1> 
                 <h1 className="font-bold text-sm text-gray-100 p-2">$1293.40 Left</h1>
@@ -445,21 +449,21 @@ Pending</span>
                 <div className="flex  gap-3 mr-5">
                 <div className="rounded-lg bg-[#303131]  w-[50%] mt-3">
                     <h1 className="p-3 font-semibold text-sm text-gray-100">Daily Summary </h1>
-                    <div className="bg-[#303131] rounded-xl flex flex-col flex-grow gap-3 mr-5 p-5">
+                    <div className="bg-[#303131]  flex flex-col flex-grow gap-3 mr-5 px-5 pt-1">
                         
-                    <table className="flex-grow gap-2 w-full">
+                    <table className="flex-grow gap-2 w-full mb-3">
                                 
-                                <thead className=" flex w-full">
-                                    <tr className="text-gray-100 text-sm font-semibold bg-[#1F1F1E] w-full">
-                                    <td className="p-4 w-[35%]">DATE</td>
+                                <thead className=" flex w-full ">
+                                    <tr className="text-gray-100 text-sm font-semibold bg-[#1F1F1E] w-full rounded-xl">
+                                    <td className="p-4 w-[35%] ">DATE</td>
                                     <td className="p-4 w-[35%]">TRADES</td>
                                     <td className="p-4 w-[35%]">LOTS</td>
                                     <td className="p-4 w-[35%]">RESULT</td> 
                                     </tr>
                                 </thead>
-                                <tbody className=' block max-h-[180px] overflow-auto'>
+                                <tbody className=' block max-h-[280px] overflow-auto '>
                             {dailySummaryData.map((item, index) => (
-                                <tr key={index} className="text-gray-100 text-sm bg-[#303131]">
+                                <tr key={index} className="text-gray-100 text-sm bg-[#303131] border-b border-[#505559]">
                                     <td className="p-4 w-[35%]">{item.date}</td>
                                     <td className="p-4 w-[35%]">{item.trades}</td>
                                     <td className="p-4 w-[35%]">{item.lots}</td>
@@ -472,7 +476,43 @@ Pending</span>
                     </div>
                     <div className="rounded-lg bg-[#303131]  w-[50%] mt-3">
                     <h1 className="p-3 font-semibold text-sm text-gray-100">Account Analysis </h1>
-                    
+                    <div className='bg-[#1F1F1E] mt-3  ml-5 mr-5 divide-y rounded-lg max-h-[290px] overflow-auto divide-[#505559]'>
+                    <div className='flex flex-grow '>
+                        <h1 className=' flex-grow  text-slate-200 font-semibold py-2 pl-5 w-[30%]'>Number of days</h1>
+                        <h1 className=' flex-grow ml-5 text-slate-200 font-semibold p-2 bg-[#303131] w-[6%]'>32</h1>
+
+                        </div>
+                        <div className='flex flex-grow  '>
+                        <h1 className=' flex-grow  text-slate-200 font-semibold py-2 pl-5 w-[30%]'>Total trades taken</h1>
+                        <h1 className=' flex-grow ml-5 text-slate-200 font-semibold p-2 bg-[#303131] w-[6%]'>631</h1>
+
+                        </div>
+                        <div className='flex flex-grow  '>
+                        <h1 className=' flex-grow  text-slate-200 font-semibold py-2 pl-5 w-[30%]'>Average trades per day</h1>
+                        <h1 className=' flex-grow ml-5 text-slate-200 font-semibold p-2 bg-[#303131] w-[6%]'>5.39</h1>
+
+                        </div>
+                        <div className='flex flex-grow  '>
+                        <h1 className=' flex-grow  text-slate-200 font-semibold py-2 pl-5 w-[30%]'>Total lots used</h1>
+                        <h1 className=' flex-grow ml-5 text-slate-200 font-semibold p-2 bg-[#303131] w-[6%]'>36.33</h1>
+
+                        </div>
+                        <div className='flex flex-grow  '>
+                        <h1 className=' flex-grow  text-slate-200 font-semibold py-2 pl-5 w-[30%]'>Average lots used</h1>
+                        <h1 className=' flex-grow ml-5 text-slate-200 font-semibold p-2 bg-[#303131] w-[6%]'>1.76</h1>
+
+                        </div>
+                        <div className='flex flex-grow  '>
+                        <h1 className=' flex-grow  text-slate-200 font-semibold py-2 pl-5 w-[30%]'>Biggest win</h1>
+                        <h1 className=' flex-grow ml-5 text-slate-200 font-semibold p-2 bg-[#303131] w-[6%]'>$206.23</h1>
+
+                        </div>
+                        <div className='flex flex-grow  '>
+                        <h1 className=' flex-grow  text-slate-200 font-semibold py-2 pl-5 w-[30%]'>Biggest loss</h1>
+                        <h1 className=' flex-grow ml-5 text-slate-200 font-semibold p-2 bg-[#303131] w-[6%]'> -$166.23</h1>
+
+                        </div>
+                        </div>
                     <div className=" gap-3 mr-5 p-5">                         
                             </div>
                     </div>
@@ -484,6 +524,9 @@ Pending</span>
     onChange={onChange}
     value={date}
     className="flex-grow w-full bg-[#303131] border-none text-gray-100"
+    
+    tileClassName="flex-grow mt-4 text-slate-200 rounded-lg"
+    
     tileContent={tileContent}
 />
                     </div>
@@ -522,7 +565,7 @@ Pending</span>
                                 </thead>
                                 <tbody className=' block max-h-[220px] overflow-auto'>
                             {openPositionsData.map((item, index) => (
-                                <tr key={index} className="text-gray-100 text-sm bg-[#303131]">
+                                <tr key={index} className="text-gray-100 text-sm bg-[#303131] border-b border-[#505559]">
                                 <td className="p-4 w-[13%]">{item.symbol}</td>
                                     <td className="p-4 w-[13%]">{item.type}</td>
                                     <td className="p-4 w-[13%]">{item.entryDate}</td>
@@ -547,7 +590,7 @@ Pending</span>
                     <h1 className="py-3 font-semibold text-sm text-gray-100">Trading History </h1>
                     </div>
                     <div className="bg-[#303131] rounded-xl flex flex-col flex-grow gap-3 mr-5 p-5">
-    <table className="flex-grow gap-2 w-full ">
+    <table className="flex-grow gap-2 w-full shadow-lg">
         <thead className="flex w-full">
             <tr className="text-gray-100 text-sm font-semibold bg-[#1F1F1E] w-full">
                 <td className="p-4 w-[10%]">SYMBOL</td>
@@ -565,7 +608,7 @@ Pending</span>
         </thead>
         <tbody className=' block max-h-[220px] overflow-auto'>
             {tradingHistoryData.map((item, index) => (
-                                <tr key={index} className="text-gray-100 text-sm bg-[#303131]">
+                                <tr key={index} className="text-gray-100 text-sm bg-[#303131] border-b border-[#505559]">
                                 <td className="p-4 w-[10%]">{item.symbol}</td>
                     <td className="p-4 w-[10%]">{item.type}</td>
                     <td className="p-4 w-[10%]">{item.openDate}</td>
